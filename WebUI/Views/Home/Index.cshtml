@@ -1,0 +1,31 @@
+﻿@model List<Business.SmsServisSaglayici>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <form action="/Home/SendSms" method="post">
+    <div class="form-group">
+        Telefon Numarası
+        <input class="form-control" name="telefon" />
+    </div>
+    <div class="form-group mt-2">
+        Mesaj
+       <textarea class="form-control"  name="mesaj" rows="5"></textarea>
+    </div>
+    <div class="form-group mt-2">
+        Servis Sağlayıcısı
+        <select class="form-control"  name="ServisSaglayici">
+            @foreach (var value in Model)
+            {
+                 <option value="@value.Id">
+                     @value.ServisSaglayici
+                </option>
+            }           
+        </select>
+    </div>
+    <div class="form-group mt-2">
+       <button type="submit" class="btn btn-primary w-100">Sms Gönder</button>
+    </div>
+    </form>
+</div>
